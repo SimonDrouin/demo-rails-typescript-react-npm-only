@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <div id="root"></div>
+
+    <% I18n.t(:load_I18n_once_to_initialize_its_backend) %>
+    <script> window.locale = <%= raw(I18n.backend.send(:translations).to_json) %></script>
+
+    <%= javascript_include_tag *webpack_asset_paths("application") %>
+  </body>
+</html>
